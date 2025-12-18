@@ -11,6 +11,7 @@ const Home: React.FC<HeroBannerProps> = () => {
         className="relative w-full overflow-hidden"
         style={{ backgroundColor: "#FCEED5" }}
       >
+        <div className=" p-4">
         <main className="relative flex flex-col md:flex-row items-center max-w-screen-xl mx-auto px-6 py-12 md:py-24 w-full min-h-[600px]">
           <div className="flex-1 z-10 text-center md:text-left mb-10 md:mb-0">
             <h1 className="text-4xl md:text-6xl font-black text-[#003459] leading-tight mb-4 uppercase">
@@ -47,6 +48,7 @@ const Home: React.FC<HeroBannerProps> = () => {
             />
           </div>
         </main>
+        </div>
       </div>
       {/* list product */}
       <div className=" p-4">
@@ -321,7 +323,7 @@ const Home: React.FC<HeroBannerProps> = () => {
         </div>
 
         <div
-          className="flex justify-between  w-full px-10 pt-10 rounded-3xl mt-10 overflow-hidden" // Thêm items-end, đổi p-10 thành px và pt (bỏ pb)
+          className="flex justify-between  w-full px-10 pt-10 rounded-3xl mt-10 overflow-hidden items-center" // Thêm items-end, đổi p-10 thành px và pt (bỏ pb)
           style={{
             backgroundImage: "url('/assets/img/Backround.png')",
             backgroundSize: "cover",
@@ -657,6 +659,123 @@ const Home: React.FC<HeroBannerProps> = () => {
           <img src="/assets/img/brand5.png" alt="" />
           <img src="/assets/img/brand6.png" alt="" />
           <img src="/assets/img/brand7.png" alt="" />
+        </div>
+
+        <div
+          className="flex justify-between  w-full px-10 pt-10 rounded-3xl mt-10 overflow-hidden items-center" // Thêm items-end, đổi p-10 thành px và pt (bỏ pb)
+          style={{
+            backgroundImage: "url('/assets/img/Banner (2).png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            minHeight: "400px", // Đảm bảo khung có đủ chiều cao
+          }}
+        >
+          {/* Phần nội dung cần có mb-10 để không bị dính sát đáy như cái ảnh */}
+          <div className="content8 pb-10 text-right md:text-left">
+            <p className="font-black text-5xl mb-2 text-[#003459]">
+              One more friend
+            </p>
+            <p className="font-bold text-4xl mb-5 text-[#003459]">
+              Thousands more fun!
+            </p>
+            <p className="max-w-md mb-8 text-gray-700">
+              Having a pet means you have more joy, a new friend, a happy person
+              who will always be with you to have fun. We have 200+ different
+              pets that can meet your needs!
+            </p>
+            <div className="flex flex-col sm:flex-row justify-end md:justify-start gap-4">
+              <button className="flex items-center justify-center gap-2 border-2 border-[#003459] text-[#003459] px-8 py-3 rounded-full font-bold text-sm hover:bg-[#003459] hover:text-white transition-all">
+                View Intro <PlayCircle size={18} />
+              </button>
+              <button className="bg-[#003459] text-white px-10 py-3 rounded-full font-bold text-sm hover:opacity-90 transition-all">
+                Explore Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* tiltle news */}
+        <div className="flex justify-between mt-16 items-center mb-8">
+          <div>
+            <p className="text-base">You already know ?</p>
+            <p className="text-2xl font-bold text-[#003459] ">
+              Useful pet knowledge
+            </p>
+          </div>
+
+          <button className="flex items-center justify-center gap-2 border-2 border-[#003459] text-[#003459] px-8 py-3 h-fit rounded-full font-bold text-sm hover:bg-[#003459] hover:text-white transition-all">
+            View more <ChevronRight size={18} />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="bg-white rounded-xl p-2">
+            <img
+              src="/assets/img/toypet.png"
+              alt=""
+              className="w-full aspect-square object-cover rounded-lg mb-3"
+            />
+            <p
+              className="px-1 py-1 text-[#1B87D3] rounded w-fit text-xs mb-2"
+              style={{ backgroundColor: "#DAF0FF" }}
+            >
+              Pet knowledge
+            </p>
+
+            <h2 className="font-bold mb-2">
+              What is a Pomeranian? How to Identify Pomeranian Dogs
+            </h2>
+            <p>
+              The Pomeranian, also known as the Pomeranian (Pom dog), is always
+              in the top of the cutest pets. Not only that, the small, lovely,
+              smart, friendly, and skillful circus dog breed.
+            </p>
+          </div>
+          <div className="bg-white rounded-xl p-2">
+            <img
+              src="/assets/img/toypet.png"
+              alt=""
+              className="w-full aspect-square object-cover rounded-lg mb-3"
+            />
+            <p
+              className="px-1 py-1 text-[#1B87D3] rounded w-fit text-xs mb-2"
+              style={{ backgroundColor: "#DAF0FF" }}
+            >
+              Pet knowledge
+            </p>
+
+            <h2 className="font-bold mb-2">
+              What is a Pomeranian? How to Identify Pomeranian Dogs
+            </h2>
+            <p>
+              The Pomeranian, also known as the Pomeranian (Pom dog), is always
+              in the top of the cutest pets. Not only that, the small, lovely,
+              smart, friendly, and skillful circus dog breed.
+            </p>
+          </div>
+          <div className="bg-white rounded-xl p-2">
+            <img
+              src="/assets/img/toypet.png"
+              alt=""
+              className="w-full aspect-square object-cover rounded-lg mb-3"
+            />
+            <p
+              className="px-1 py-1 text-[#1B87D3] rounded w-fit text-xs mb-2"
+              style={{ backgroundColor: "#DAF0FF" }}
+            >
+              Pet knowledge
+            </p>
+
+            <h2 className="font-bold mb-2">
+              What is a Pomeranian? How to Identify Pomeranian Dogs
+            </h2>
+            <p>
+              The Pomeranian, also known as the Pomeranian (Pom dog), is always
+              in the top of the cutest pets. Not only that, the small, lovely,
+              smart, friendly, and skillful circus dog breed.
+            </p>
+          </div>
         </div>
       </div>
     </div>
