@@ -1,149 +1,153 @@
 import React from "react";
-import { MessageSquareMore } from "lucide-react";
-export default function ProductDetail() {
+
+export default function PetProductDetail() {
   return (
     <div className="p-4">
-      <div className="flex gap-5 bg-white pl-2 pr-9 py-2 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer">
+      <div className="flex gap-5 bg-white pl-2 pr-9 py-2 rounded-xl shadow-md hover:shadow-lg transition-shadow ">
         <div className="image-product">
-          <img src="/assets/img/image_product.png" alt="" />
+          <img src="/assets/img/eat1.png" alt="" />
           <div className="list-image flex gap-2 mt-3">
-            <img src="/assets/img/image 3.png" alt="" />
-            <img src="/assets/img/image 3.png" alt="" />
-            <img src="/assets/img/image 3.png" alt="" />
-            <img src="/assets/img/image 3.png" alt="" />
-            <img src="/assets/img/image 3.png" alt="" />
-          </div>
-
-          <div className="bg-[#FFE7BA] flex gap-2 px-2 py-2 mt-3 rounded-lg items-center mt-7 mb-7">
-            <img src="/assets/img/icon-heart.svg" alt="" />
-            <p>100% health guarantee for pets</p>
-            <img src="/assets/img/nhim.svg" alt="" />
-            <p>100% guarantee of pet identification</p>
-          </div>
-
-          <div className="flex gap-6">
-            <img src="/assets/img/share.png" alt="" />
-            <img src="/assets/img/Facebook - Negative.png" alt="" />
-            <img src="/assets/img/Twitter - Negative.png" alt="" />
-            <img src="/assets/img/intagram.png" alt="" />
-            <img src="/assets/img/YouTube - Negative.png" alt="" />
+            <img src="/assets/img/eat.png" alt="" />
+            <img src="/assets/img/eat.png" alt="" />
+            <img src="/assets/img/eat2.png" alt="" />
+            <img src="/assets/img/eat3.png" alt="" />
+            <img src="/assets/img/eat4.png" alt="" />
           </div>
         </div>
         <div className="infor-product flex-1">
-          <h5 className="font-bold text-[#003459] text-xl">Shiba Inu Sepia</h5>
-          <h5 className="font-bold text-[#003459] text-lg">34.000.000 VND</h5>
-          <div className="flex flex-col sm:flex-row justify-end md:justify-start gap-4 my-7">
-            <button className="bg-[#003459] text-white px-10 py-3 rounded-full font-bold text-sm hover:opacity-90 transition-all">
-              Contact us
-            </button>
-            <button className="flex items-center justify-center gap-2 border-2 border-[#003459] text-[#003459] px-8 py-3 rounded-full font-bold text-sm hover:bg-[#003459] hover:text-white transition-all">
-              <MessageSquareMore size={18} /> Chat with Munito
+          <h5 className="font-bold text-[#003459] text-xl">
+            NaturVet Dogs - Omega-Gold Plus Salmon Oil{" "}
+          </h5>
+          <h5 className="font-bold text-[#003459] text-lg">
+            350.000 VND{" "}
+            <span className="text-[12px] text-[#4A5568] font-[400]">
+              <s>399.000 VND</s>
+            </span>{" "}
+            <span className="text-[15px] font-[500] text-[#0DA487]">
+              (12% off){" "}
+            </span>
+          </h5>
+
+          <div className="interact flex justify-between">
+            <div className="flex gap-1">
+              <img src="/assets/img/light.svg" alt="" className="w-[16px]" />
+              <img src="/assets/img/light.svg" alt="" className="w-[16px]" />
+              <img src="/assets/img/light.svg" alt="" className="w-[16px]" />
+              <img src="/assets/img/light.svg" alt="" className="w-[16px]" />
+              <img src="/assets/img/null.svg" alt="" className="w-[16px]" />
+              <p className="text-[#4A5568] text-[12px]">23 Customer Review</p>
+            </div>
+
+            <div className="social-network flex gap-[20px] ">
+              <img src="/assets/img/share.svg" alt="" />
+              <img src="/assets/img/Facebook.svg" alt="" />
+              <img src="/assets/img/Twitter.svg" alt="" />
+              <img src="/assets/img/Instagram.svg" alt="" />
+              <img src="/assets/img/youtube.svg" alt="" />
+            </div>
+          </div>
+
+          <div className="group-button flex justify-between mt-[40px]">
+            <div className="quantity bg-[#FFE7BA] border-[#FFE7BA] border-1 w-[200px] h-[48px] rounded-[50px] flex items-center justify-between">
+              <button className="w-[45px] h-[45px] rounded-full bg-[#003459] text-[#FFFFFF] text-[23px]">
+                +
+              </button>
+              <p>1</p>
+              <button className="w-[45px] h-[45px] rounded-full bg-[#003459] text-[#FFFFFF] text-[23px]">
+                -
+              </button>
+            </div>
+            <button className="bg-[#003459] text-white px-[150px] py-3 rounded-full font-bold text-sm hover:opacity-90 transition-all">
+              Add To Cart
             </button>
           </div>
 
-          <ul className="border-b border-[#CCD1D2] border-1 pb-[50px]">
+          <ul className="infor mt-[30px]">
+            <li>
+              <div className="flex  border-b border-[#CCD1D2] border-1 py-4">
+                <div className="w-[200px]">
+                  <p>SKU</p>
+                </div>
+                <p>:2305511</p>
+              </div>
+            </li>
             <li>
               <div className="flex   border-b border-[#CCD1D2] border-1 py-4 ">
                 <div className="w-[200px]">
-                  <p>Gender</p>
+                  <p>Lifestage</p>
                 </div>
-                <p>:Female</p>
+                <p>:All Lifestages</p>
               </div>
             </li>
 
             <li>
               <div className="flex border-b border-[#CCD1D2] border-1 py-4">
                 <div className="w-[200px]">
-                  <p>Age</p>
+                  <p>Brand</p>
                 </div>
-                <p>: 2 Months</p>
+                <p>:NaturVet</p>
               </div>
             </li>
 
             <li>
               <div className="flex  border-b border-[#CCD1D2] border-1 py-4">
                 <div className="w-[200px]">
-                  <p>Size</p>
+                  <p>Days to Ship</p>
                 </div>
-                <p>: Small</p>
-              </div>
-            </li>
-
-            <li>
-              <div className="flex  border-b border-[#CCD1D2] border-1 py-4">
-                <div className="w-[200px]">
-                  <p>Color</p>
-                </div>
-                <p>: Appricot & Tan</p>
-              </div>
-            </li>
-
-            <li>
-              <div className="flex  border-b border-[#CCD1D2] border-1 py-4">
-                <div className="w-[200px]">
-                  <p>Vaccinated</p>
-                </div>
-                <p>: Yes</p>
-              </div>
-            </li>
-
-            <li>
-              <div className="flex  border-b border-[#CCD1D2] border-1 py-4">
-                <div className="w-[200px]">
-                  <p>Cert</p>
-                </div>
-                <p>: Yes (MKA)</p>
-              </div>
-            </li>
-
-            <li>
-              <div className="flex  border-b border-[#CCD1D2] border-1 py-4">
-                <div className="w-[200px]">
-                  <p>Gender</p>
-                </div>
-                <p>:Female</p>
-              </div>
-            </li>
-
-            <li>
-              <div className="flex  border-b border-[#CCD1D2] border-1 py-4">
-                <div className="w-[200px]">
-                  <p>Additional Information</p>
-                </div>
-                <div className=" flex gap-1">
-                  <p>:</p>
-                  <p className="w-[200px]">
-                    Pure breed Shih Tzu. Good body structure. With MKA cert and
-                    Microchip. Father from champion lineage.
-                  </p>
-                </div>
+                <p>:Ship Next Business Day</p>
               </div>
             </li>
           </ul>
         </div>
       </div>
-      {/* feedback */}
-      <div className="feeback mt-[60px]">
-        <h5 className="font-bold text-[#003459] text-xl mb-[20px]">
-          Our lovely customer
-        </h5>
-        <div className="flex gap-2">
-          <img alt="" src="/assets/img/feedback1.png" />
-          <img alt="" src="/assets/img/feedback2.png" />
-          <img alt="" src="/assets/img/feedback3.png" />
-          <img alt="" src="/assets/img/feedback4.png" />
-          {/* <img alt="" src="/assets/img/feedback4.png" /> */}
+
+      <div className="bg-white pl-2 pr-9 py-2 rounded-xl shadow-md hover:shadow-lg transition-shadow mt-[20px]">
+        <div className="flex gap-3 border-b border-[#CCD1D2] border-1 py-4 w-[500px] text-[14px]">
+          <a
+            href=""
+            className="bg-white text-[#00528C] border border-[#00528C] px-6 py-2 rounded-l-[5px] transition-all duration-300 ease-in-out inline-block font-medium hover:bg-[#00528C] hover:text-white hover:shadow-md"
+          >
+            Details
+          </a>
+          <a
+            href=""
+            className="bg-white text-[#00528C] border border-[#00528C] px-6 py-2  transition-all duration-300 ease-in-out inline-block font-medium hover:bg-[#00528C] hover:text-white hover:shadow-md"
+          >
+            Ingredients
+          </a>
+          <a
+            href=""
+            className="bg-white text-[#00528C] border border-[#00528C] px-6 py-2 transition-all duration-300 ease-in-out inline-block font-medium hover:bg-[#00528C] hover:text-white hover:shadow-md"
+          >
+            Directions
+          </a>
+          <a
+            href=""
+            className="bg-white text-[#00528C] border border-[#00528C] px-6 py-2 rounded-r-[5px] transition-all duration-300 ease-in-out inline-block font-medium hover:bg-[#00528C] hover:text-white hover:shadow-md"
+          >
+            Reviews
+          </a>
+        </div>
+
+        <div className="description">
+          <h6>Description</h6>
+          <p>
+            Please note that the product information displayed is provided by
+            manufacturers, suppliers and other third parties and is not
+            independently verified by Petco. Full disclaimer here. NaturVet No
+            Scoot Dog Soft Chews, Pack of 60 chews - Helps support healthy anal
+            gland function - Helps support normal bowel function - For dogs over
+            12 weeks old - Soft chews
+          </p>
         </div>
       </div>
-
-      {/* products in the same category */}
-
-      <div className="suggest mt-[60px]">
+      <div className="bg-white pl-2 pr-9 py-2 rounded-xl shadow-md hover:shadow-lg transition-shadow mt-[20px]">
         <p className="text-base">What new?</p>
         <h5 className="text-2xl font-bold text-[#003459] mb-5">
           Take a look at some of our pets
         </h5>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 mt-9">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 mt-9">
           {/* Card Item */}
           <div className="bg-white p-2 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer">
             {/* Image: Để w-full để nó chiếm hết chiều rộng card, aspect-square để ảnh vuông */}
