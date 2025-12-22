@@ -1,6 +1,97 @@
-import React from "react";
-
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 export default function Register() {
+  const [username, setUsername] = useState("");
+  const [errorUsername, setErrorUsername] = useState("");
+
+  const [fullName, setFullName] = useState("");
+  const [errorFullName, setErrorFullName] = useState("");
+
+  const [email, setEmail] = useState("");
+  const [errorEmail, setErrorEmail] = useState("");
+
+  const [password, setPassword] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
+
+  const [phone, setPhone] = useState("");
+  const [errorPhone, setErrorPhone] = useState("");
+
+  const [successMessage, setSuccessMessage] = useState("");
+  const [generalError, setGeneralError] = useState("");
+
+  const navigate = useNavigate();
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setErrorUsername("");
+    setErrorFullName("");
+    setErrorEmail("");
+    setErrorPassword("");
+    setErrorPhone("");
+    setSuccessMessage("");
+    setGeneralError("");
+ 
+
+    let hasError = false;
+    if (username === "") {
+      setErrorUsername("Please enter the username.");
+      hasError = true;
+    }
+    if (fullName === "") {
+      setErrorFullName("Please enter the fullname.");
+      hasError = true;
+    }
+    if (email === "") {
+      setErrorEmail("Please enter the email.");
+      hasError = true;
+    }
+    if (password === "") {
+      setErrorPassword("Please enter the password.");
+      hasError = true;
+    }
+    if (phone === "") {
+      setErrorPhone("Please enter the phone.");
+      hasError = true;
+    }
+
+  
+
+    if (hasError) return;
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/registration",
+        { username, fullName, email, password, phone }
+      );
+      setSuccessMessage("Success: " + response.data.message);
+      navigate("/CheckEmail")
+      setUsername("");
+      setFullName("");
+      setEmail("");
+      setPassword("");
+      setPhone("");
+    } catch (error) {
+      if (error.response && error.response.data) {
+        const { message, status } = error.response.data;
+
+        if (status === "USERNAME_EXISTS") {
+          setErrorUsername(message);
+        } else if (status === "EMAIL_EXISTS") {
+          setErrorEmail(message);
+        } else if (status === "PHONE_EXISTS") {
+          setErrorPhone(message);
+        } else {
+          setGeneralError(message);
+        }
+      } else {
+        setGeneralError(" Lỗi không xác định khi đăng ký");
+      }
+    }
+  };
+
   return (
     <div className="p-4">
       <div className="flex flex-col md:flex-row min-h-screen bg-white">
@@ -19,48 +110,86 @@ export default function Register() {
             </h1>
             <p className="text-gray-600 mb-8">Enter your details below</p>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="border-b border-gray-300 focus-within:border-black transition-colors">
                 <input
                   type="text"
-                  placeholder="Name"
+                  value={username}
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                    setErrorUsername("");
+                  }}
+                  placeholder="Username"
                   className="w-full py-2 outline-none text-black placeholder:text-gray-400"
                 />
               </div>
+              {errorUsername && <p style={{ color: "red" }}>{errorUsername}</p>}
 
               <div className="border-b border-gray-300 focus-within:border-black transition-colors">
                 <input
                   type="text"
-                  placeholder="Email or Phone Number"
+                  value={fullName}
+                  onChange={(e) => {
+                    setFullName(e.target.value);
+                    setErrorFullName("");
+                  }}
+                  placeholder="Fullname"
                   className="w-full py-2 outline-none text-black placeholder:text-gray-400"
                 />
               </div>
+              {errorFullName && <p style={{ color: "red" }}>{errorFullName}</p>}
+
+              <div className="border-b border-gray-300 focus-within:border-black transition-colors">
+                <input
+                  type="text"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setErrorEmail("");
+                  }}
+                  placeholder="Email"
+                  className="w-full py-2 outline-none text-black placeholder:text-gray-400"
+                />
+              </div>
+              {errorEmail && <p style={{ color: "red" }}>{errorEmail}</p>}
 
               <div className="border-b border-gray-300 focus-within:border-black transition-colors">
                 <input
                   type="password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    setErrorPassword("");
+                  }}
                   placeholder="Password"
                   className="w-full py-2 outline-none text-black placeholder:text-gray-400"
                 />
               </div>
+              {errorPassword && <p style={{ color: "red" }}>{errorPassword}</p>}
+
+              <div className="border-b border-gray-300 focus-within:border-black transition-colors">
+                <input
+                  type="text"
+                  value={phone}
+                  onChange={(e) => {
+                    setPhone(e.target.value);
+                    setErrorPhone("");
+                  }}
+                  placeholder="Phone"
+                  className="w-full py-2 outline-none text-black placeholder:text-gray-400"
+                />
+              </div>
+              {errorPhone && <p style={{ color: "red" }}>{errorPhone}</p>}
+
+              
+              {generalError && <p className="text-red-500">{generalError}</p>}
+              {successMessage && (<p className="text-green-600">{successMessage}</p>)}
 
               <button
                 type="submit"
                 className="w-full bg-[#003459] text-white py-4 rounded-md font-medium hover:bg-[#004b80] transition-colors mt-4"
               >
                 Create Account
-              </button>
-
-              <button
-                type="button"
-                className="w-full border border-gray-300 py-4 rounded-md font-medium flex items-center justify-center gap-3 hover:bg-gray-50 transition-colors"
-              >
-                <img
-                  src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-                  alt="Google Icon"
-                  className="w-5 h-5"
-                />
-                Sign up with Google
               </button>
             </form>
 

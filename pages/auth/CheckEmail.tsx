@@ -1,6 +1,47 @@
-import React from "react";
-
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 export default function CheckEmail() {
+  const [token, setToken] = useState("");
+  const [errorToken, setErrorToken] = useState("");
+
+  const [successMessage, setSuccessMessage] = useState("");
+  const [generalError, setGeneralError] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setToken("");
+
+    let hasError = false;
+    if (token === "") {
+      setToken("Please enter the username.");
+      hasError = true;
+    }
+
+    if (hasError) return;
+    try {
+      const response = await axios.post(
+        `http://localhost:8080/registration/tokenConfirmation?token=${token}`
+      );
+      setSuccessMessage("successs" + response.data.message);
+      navigate("/Login")
+      setToken("");
+    } catch (error) {
+      if (error.response && error.response.data) {
+        const { message, status } = error.response.data;
+
+        if (status === "INVALID_TOKEN") {
+          setErrorToken(message);
+        } else if (status == "USER_NOT_FOUND") {
+          setErrorToken(message);
+        } else {
+          setGeneralError(message);
+        }
+      }
+    }
+  };
   return (
     <div className="p-4">
       <div className="flex flex-col md:flex-row min-h-screen bg-white">
@@ -19,14 +60,26 @@ export default function CheckEmail() {
             </h1>
             <p className="text-gray-600 mb-8">Enter your details below</p>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="border-b border-gray-300 focus-within:border-black transition-colors">
                 <input
                   type="text"
-                  placeholder="Code"
+                  value={token}
+                  onChange={(e) => {
+                    setToken(e.target.value);
+                    setErrorToken("");
+                  }}
+                  placeholder="Token"
                   className="w-full py-2 outline-none text-black placeholder:text-gray-400"
                 />
               </div>
+
+              {errorToken && <p className="text-red-500"> {errorToken}</p>}
+              {generalError && <p className="text-red-500">{generalError}</p>}
+              {successMessage && (
+                <p className="text-green-600">{successMessage}</p>
+              )}
+
               <button
                 type="submit"
                 className="w-full bg-[#003459] text-white py-4 rounded-md font-medium hover:bg-[#004b80] transition-colors mt-4"
