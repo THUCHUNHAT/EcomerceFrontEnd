@@ -19,9 +19,9 @@ export default function Register() {
 
   const [successMessage, setSuccessMessage] = useState("");
   const [generalError, setGeneralError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,7 +33,6 @@ export default function Register() {
     setErrorPhone("");
     setSuccessMessage("");
     setGeneralError("");
- 
 
     let hasError = false;
     if (username === "") {
@@ -57,17 +56,18 @@ export default function Register() {
       hasError = true;
     }
 
-  
-
     if (hasError) return;
-
+    setIsLoading(true);
     try {
-      const response = await axios.post(
-        "http://localhost:8080/registration",
-        { username, fullName, email, password, phone }
-      );
+      const response = await axios.post("http://localhost:8080/registration", {
+        username,
+        fullName,
+        email,
+        password,
+        phone,
+      });
       setSuccessMessage("Success: " + response.data.message);
-      navigate("/CheckEmail")
+      navigate("/CheckEmail");
       setUsername("");
       setFullName("");
       setEmail("");
@@ -89,6 +89,8 @@ export default function Register() {
       } else {
         setGeneralError(" Lỗi không xác định khi đăng ký");
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -181,15 +183,19 @@ export default function Register() {
               </div>
               {errorPhone && <p style={{ color: "red" }}>{errorPhone}</p>}
 
-              
               {generalError && <p className="text-red-500">{generalError}</p>}
-              {successMessage && (<p className="text-green-600">{successMessage}</p>)}
+              {successMessage && (
+                <p className="text-green-600">{successMessage}</p>
+              )}
 
               <button
                 type="submit"
-                className="w-full bg-[#003459] text-white py-4 rounded-md font-medium hover:bg-[#004b80] transition-colors mt-4"
+                disabled={isLoading}
+                className={`w-full text-white py-4 rounded-md font-medium transition-colors mt-4 ${
+                  isLoading ? "bg-gray-400" : "bg-[#003459] hover:bg-[#004b80]"
+                }`}
               >
-                Create Account
+                {isLoading ? "Creating..." : "Create Account"}
               </button>
             </form>
 
