@@ -14,6 +14,7 @@ import ForgotPassword from "./pages/auth/ForgotPassword";
 import CheckEmail from"./pages/auth/CheckEmail";
 import SetNewPassword from "./pages/auth/SetNewPassword";
 import PasswordSetSuccessful from "./pages/auth/PasswordSetSuccessful";
+import Checkout from "./pages/Checkout";
 const App: React.FC = () => {
   return (
     <Router>
@@ -32,6 +33,7 @@ const App: React.FC = () => {
           <Route path="/CheckEmail" element={<CheckEmail/>}/>
           <Route path="/SetNewPassword" element={<SetNewPassword/>}/>
           <Route path="/PasswordSetSuccessful" element={<PasswordSetSuccessful/>}/>
+          <Route path="/Checkout" element={<Checkout/>}/>
         </Route>
       </Routes>
     </Router>

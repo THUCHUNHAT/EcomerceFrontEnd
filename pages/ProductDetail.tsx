@@ -205,7 +205,7 @@ export default function ProductDetail() {
                 className="flex gap-6 rounded-md items-center text-sm pt-2 pb-2 pl-2 mt-3"
                 style={{ backgroundColor: "#FCEED5" }}
               >
-                <img src="/assets/img/Frame.svg" alt="" class="w-5 h-5" />
+                <img src="/assets/img/Frame.svg" alt="" className="w-5 h-5" />
                 <p className="font-bold">Free Cat Food</p>
               </div>
             </div>

@@ -12,42 +12,42 @@ const Home: React.FC<HeroBannerProps> = () => {
         style={{ backgroundColor: "#FCEED5" }}
       >
         <div className=" p-4">
-        <main className="relative flex flex-col md:flex-row items-center max-w-screen-xl mx-auto px-6 py-12 md:py-24 w-full min-h-[600px]">
-          <div className="flex-1 z-10 text-center md:text-left mb-10 md:mb-0">
-            <h1 className="text-4xl md:text-6xl font-black text-[#003459] leading-tight mb-4 uppercase">
-              One More Friend <br />
-              <span className="text-[#003459] opacity-90">
-                Thousands More Fun!
-              </span>
-            </h1>
-            <p className="text-[#242b33] text-sm md:text-base font-medium mb-8 max-w-md leading-relaxed">
-              Having a pet means you have more joy, a new friend, a happy person
-              who will always be with you to have fun. We have 200+ different
-              pets that can meet your needs!
-            </p>
+          <main className="relative flex flex-col md:flex-row items-center max-w-screen-xl mx-auto px-6 py-12 md:py-24 w-full min-h-[600px]">
+            <div className="flex-1 z-10 text-center md:text-left mb-10 md:mb-0">
+              <h1 className="text-4xl md:text-6xl font-black text-[#003459] leading-tight mb-4 uppercase">
+                One More Friend <br />
+                <span className="text-[#003459] opacity-90">
+                  Thousands More Fun!
+                </span>
+              </h1>
+              <p className="text-[#242b33] text-sm md:text-base font-medium mb-8 max-w-md leading-relaxed">
+                Having a pet means you have more joy, a new friend, a happy
+                person who will always be with you to have fun. We have 200+
+                different pets that can meet your needs!
+              </p>
 
-            <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-              <button className="flex items-center justify-center gap-2 border-2 border-[#003459] text-[#003459] px-8 py-3 rounded-full font-bold text-sm hover:bg-[#003459] hover:text-white transition-all">
-                View Intro <PlayCircle size={18} />
-              </button>
-              <button className="bg-[#003459] text-white px-10 py-3 rounded-full font-bold text-sm hover:opacity-90 transition-all">
-                Explore Now
-              </button>
+              <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+                <button className="flex items-center justify-center gap-2 border-2 border-[#003459] text-[#003459] px-8 py-3 rounded-full font-bold text-sm hover:bg-[#003459] hover:text-white transition-all">
+                  View Intro <PlayCircle size={18} />
+                </button>
+                <button className="bg-[#003459] text-white px-10 py-3 rounded-full font-bold text-sm hover:opacity-90 transition-all">
+                  Explore Now
+                </button>
+              </div>
             </div>
-          </div>
 
-          <div className="flex-1 relative z-10 flex justify-center md:justify-end items-end h-full mt-10 md:mt-0">
-            <div
-              className="absolute bottom-0 right-0 w-full md:w-[90%] h-[75%] rounded-t-[60px] md:rounded-t-[80px] -z-10"
-              style={{ backgroundColor: "#F7DBA7" }}
-            />
-            <img
-              src="/assets/img/imgbanner.png"
-              alt="Happy woman with dog"
-              className="w-full max-w-[500px] md:max-w-[600px] object-contain select-none z-10"
-            />
-          </div>
-        </main>
+            <div className="flex-1 relative z-10 flex justify-center md:justify-end items-end h-full mt-10 md:mt-0">
+              <div
+                className="absolute bottom-0 right-0 w-full md:w-[90%] h-[75%] rounded-t-[60px] md:rounded-t-[80px] -z-10"
+                style={{ backgroundColor: "#F7DBA7" }}
+              />
+              <img
+                src="/assets/img/imgbanner.png"
+                alt="Happy woman with dog"
+                className="w-full max-w-[500px] md:max-w-[600px] object-contain select-none z-10"
+              />
+            </div>
+          </main>
         </div>
       </div>
       {/* list product */}
