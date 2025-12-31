@@ -4,17 +4,21 @@ import { ChevronRight } from "lucide-react";
 import { getAllPet } from "../api/petApi.tsx";
 import { useState, useEffect } from "react";
 import {getAllProduct} from "../api/productApi.tsx";
+import { getArticle } from "../api/articleApi.tsx";
 interface HeroBannerProps {}
 
 const Home: React.FC<HeroBannerProps> = () => {
   const [pets, setPets] = useState([]);
   const [products, setProducts] = useState([]);
+  const [articles, setArticles] = useState([]);
   useEffect(() => {
-    const fetchPets = async () => {
+    const fetchPetsAndProducts = async () => {
       const data = await getAllPet(0, 8);
+      const dataProduct = await getAllProduct(0,8);
+      setProducts(dataProduct.data.items);
       setPets(data.data.items);
     };
-    fetchPets();
+    fetchPetsAndProducts();
   }, []);
   
   
@@ -179,40 +183,10 @@ const Home: React.FC<HeroBannerProps> = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 mt-9">
-          {/* Card Item */}
-          <div className="bg-white p-2 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-            {/* Image: Để w-full để nó chiếm hết chiều rộng card, aspect-square để ảnh vuông */}
-            <img
-              src="/assets/img/product.png"
-              alt="Pomeranian White"
-              className="w-full aspect-square object-cover rounded-lg mb-3"
-            />
-
-            {/* Content Container: Thêm padding nhỏ để text không dính sát mép */}
-            <div className="px-2 pb-2">
-              <h6 className="font-bold text-[#001E3C] leading-tight mb-1">
-                MO231 - Pomeranian White
-              </h6>
-
-              <div className="flex items-center gap-2 text-[12px] text-gray-500 mb-2">
-                <span>
-                  Gene: <span className="font-bold text-gray-700">Male</span>
-                </span>
-                <span className="text-[6px] opacity-40">●</span>
-                <span>
-                  Age:{" "}
-                  <span className="font-bold text-gray-700">02 months</span>
-                </span>
-              </div>
-
-              <h6 className="font-bold text-[#001E3C] text-sm">
-                6.900.000 VND
-              </h6>
-            </div>
-          </div>
-
-          {/* Card Item */}
-          <div className="bg-white p-2 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer">
+          {products.map((product) => (
+          <div 
+            key={product.id}
+          className="bg-white p-2 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer">
             {/* Image: Để w-full để nó chiếm hết chiều rộng card, aspect-square để ảnh vuông */}
             <img
               src="/assets/img/toypet.png"
@@ -223,17 +197,17 @@ const Home: React.FC<HeroBannerProps> = () => {
             {/* Content Container: Thêm padding nhỏ để text không dính sát mép */}
             <div className="px-2 pb-2">
               <h6 className="font-bold text-[#001E3C] leading-tight mb-1">
-                Costumes Chicken Drumsti ck Headband
+                {product.name}
               </h6>
 
               <div className="flex items-center gap-2 text-[12px] text-gray-500 mb-2">
                 <span>
                   Product:{" "}
-                  <span className="font-bold text-gray-700">Costume</span>
+                  <span className="font-bold text-gray-700">{product.categoryName}</span>
                 </span>
               </div>
               <h6 className="font-bold text-[#001E3C] text-sm">
-                6.900.000 VND
+                {product.price} VND
               </h6>
 
               <div
@@ -245,198 +219,7 @@ const Home: React.FC<HeroBannerProps> = () => {
               </div>
             </div>
           </div>
-
-          {/* Card Item */}
-          <div className="bg-white p-2 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-            {/* Image: Để w-full để nó chiếm hết chiều rộng card, aspect-square để ảnh vuông */}
-            <img
-              src="/assets/img/product.png"
-              alt="Pomeranian White"
-              className="w-full aspect-square object-cover rounded-lg mb-3"
-            />
-
-            {/* Content Container: Thêm padding nhỏ để text không dính sát mép */}
-            <div className="px-2 pb-2">
-              <h6 className="font-bold text-[#001E3C] leading-tight mb-1">
-                MO231 - Pomeranian White
-              </h6>
-
-              <div className="flex items-center gap-2 text-[12px] text-gray-500 mb-2">
-                <span>
-                  Gene: <span className="font-bold text-gray-700">Male</span>
-                </span>
-                <span className="text-[6px] opacity-40">●</span>
-                <span>
-                  Age:{" "}
-                  <span className="font-bold text-gray-700">02 months</span>
-                </span>
-              </div>
-
-              <h6 className="font-bold text-[#001E3C] text-sm">
-                6.900.000 VND
-              </h6>
-            </div>
-          </div>
-
-          {/* Card Item */}
-          <div className="bg-white p-2 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-            {/* Image: Để w-full để nó chiếm hết chiều rộng card, aspect-square để ảnh vuông */}
-            <img
-              src="/assets/img/product.png"
-              alt="Pomeranian White"
-              className="w-full aspect-square object-cover rounded-lg mb-3"
-            />
-
-            {/* Content Container: Thêm padding nhỏ để text không dính sát mép */}
-            <div className="px-2 pb-2">
-              <h6 className="font-bold text-[#001E3C] leading-tight mb-1">
-                MO231 - Pomeranian White
-              </h6>
-
-              <div className="flex items-center gap-2 text-[12px] text-gray-500 mb-2">
-                <span>
-                  Gene: <span className="font-bold text-gray-700">Male</span>
-                </span>
-                <span className="text-[6px] opacity-40">●</span>
-                <span>
-                  Age:{" "}
-                  <span className="font-bold text-gray-700">02 months</span>
-                </span>
-              </div>
-
-              <h6 className="font-bold text-[#001E3C] text-sm">
-                6.900.000 VND
-              </h6>
-            </div>
-          </div>
-
-          {/* Card Item */}
-          <div className="bg-white p-2 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-            {/* Image: Để w-full để nó chiếm hết chiều rộng card, aspect-square để ảnh vuông */}
-            <img
-              src="/assets/img/product.png"
-              alt="Pomeranian White"
-              className="w-full aspect-square object-cover rounded-lg mb-3"
-            />
-
-            {/* Content Container: Thêm padding nhỏ để text không dính sát mép */}
-            <div className="px-2 pb-2">
-              <h6 className="font-bold text-[#001E3C] leading-tight mb-1">
-                MO231 - Pomeranian White
-              </h6>
-
-              <div className="flex items-center gap-2 text-[12px] text-gray-500 mb-2">
-                <span>
-                  Gene: <span className="font-bold text-gray-700">Male</span>
-                </span>
-                <span className="text-[6px] opacity-40">●</span>
-                <span>
-                  Age:{" "}
-                  <span className="font-bold text-gray-700">02 months</span>
-                </span>
-              </div>
-
-              <h6 className="font-bold text-[#001E3C] text-sm">
-                6.900.000 VND
-              </h6>
-            </div>
-          </div>
-
-          {/* Card Item */}
-          <div className="bg-white p-2 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-            {/* Image: Để w-full để nó chiếm hết chiều rộng card, aspect-square để ảnh vuông */}
-            <img
-              src="/assets/img/product.png"
-              alt="Pomeranian White"
-              className="w-full aspect-square object-cover rounded-lg mb-3"
-            />
-
-            {/* Content Container: Thêm padding nhỏ để text không dính sát mép */}
-            <div className="px-2 pb-2">
-              <h6 className="font-bold text-[#001E3C] leading-tight mb-1">
-                MO231 - Pomeranian White
-              </h6>
-
-              <div className="flex items-center gap-2 text-[12px] text-gray-500 mb-2">
-                <span>
-                  Gene: <span className="font-bold text-gray-700">Male</span>
-                </span>
-                <span className="text-[6px] opacity-40">●</span>
-                <span>
-                  Age:{" "}
-                  <span className="font-bold text-gray-700">02 months</span>
-                </span>
-              </div>
-
-              <h6 className="font-bold text-[#001E3C] text-sm">
-                6.900.000 VND
-              </h6>
-            </div>
-          </div>
-
-          {/* Card Item */}
-          <div className="bg-white p-2 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-            {/* Image: Để w-full để nó chiếm hết chiều rộng card, aspect-square để ảnh vuông */}
-            <img
-              src="/assets/img/product.png"
-              alt="Pomeranian White"
-              className="w-full aspect-square object-cover rounded-lg mb-3"
-            />
-
-            {/* Content Container: Thêm padding nhỏ để text không dính sát mép */}
-            <div className="px-2 pb-2">
-              <h6 className="font-bold text-[#001E3C] leading-tight mb-1">
-                MO231 - Pomeranian White
-              </h6>
-
-              <div className="flex items-center gap-2 text-[12px] text-gray-500 mb-2">
-                <span>
-                  Gene: <span className="font-bold text-gray-700">Male</span>
-                </span>
-                <span className="text-[6px] opacity-40">●</span>
-                <span>
-                  Age:{" "}
-                  <span className="font-bold text-gray-700">02 months</span>
-                </span>
-              </div>
-
-              <h6 className="font-bold text-[#001E3C] text-sm">
-                6.900.000 VND
-              </h6>
-            </div>
-          </div>
-
-          {/* Card Item */}
-          <div className="bg-white p-2 rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-            {/* Image: Để w-full để nó chiếm hết chiều rộng card, aspect-square để ảnh vuông */}
-            <img
-              src="/assets/img/product.png"
-              alt="Pomeranian White"
-              className="w-full aspect-square object-cover rounded-lg mb-3"
-            />
-
-            {/* Content Container: Thêm padding nhỏ để text không dính sát mép */}
-            <div className="px-2 pb-2">
-              <h6 className="font-bold text-[#001E3C] leading-tight mb-1">
-                MO231 - Pomeranian White
-              </h6>
-
-              <div className="flex items-center gap-2 text-[12px] text-gray-500 mb-2">
-                <span>
-                  Gene: <span className="font-bold text-gray-700">Male</span>
-                </span>
-                <span className="text-[6px] opacity-40">●</span>
-                <span>
-                  Age:{" "}
-                  <span className="font-bold text-gray-700">02 months</span>
-                </span>
-              </div>
-
-              <h6 className="font-bold text-[#001E3C] text-sm">
-                6.900.000 VND
-              </h6>
-            </div>
-          </div>
+          ))}
         </div>
 
         <div className="flex mt-16 justify-between items-end">
